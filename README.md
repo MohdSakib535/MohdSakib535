@@ -16,7 +16,7 @@
 
 - 🤝worked on frontend **Javascript , Jquery , Bootstrap , Material UI**
 
-- 📫 How to reach me **mohdsakib9399@gmail.com**
+- 📫 How to reach me **mohdsakib9398@gmail.com**
 
 - ⚡ Fun fact **coding ,creating real life projects**
 
