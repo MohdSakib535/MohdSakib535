@@ -20,38 +20,16 @@ Underneath is **5+ years of backend engineering** (Python, FastAPI, Django, Kafk
 - **Trustworthy AI** — prompt-injection defence, validated structured outputs, guardrails, and agents that abstain when the evidence is weak
 - **AI-native backends** — event-driven systems serving **1,000+ concurrent submissions at sub-200 ms**; **~35% less DB connection overhead** with PgBouncer pooling
 
-## Featured: Agentic GraphRAG
-
-**[Agentic GraphRAG — Intelligent Knowledge Graph Assistant](https://github.com/MohdSakib535/Agentic-GraphRAG-Intelligent-Knowledge-Graph-Assistant)** is an enterprise knowledge assistant that turns PDF, DOCX, TXT and Markdown into a **Neo4j knowledge graph + vector index**, then answers through a **LangGraph agent** instead of a single LLM call:
-
-`analyze` → `route` (vector · graph · hybrid) → `retrieve` → `grade evidence` → `rewrite & retry` (≤ 3×) → `generate` → `verify citations` → an answer with sources, or an honest “not enough evidence”.
-
-<table>
-  <tr>
-    <td width="33%" valign="top">
-      <b>Ingest → knowledge graph</b><br/>
-      Page-aware chunking, validated LLM extraction of entities and relations, entity resolution (aliases · fuzzy · LLM tie-break), then Neo4j graph + HNSW vectors + BM25 — all in async Celery workers.
-    </td>
-    <td width="33%" valign="top">
-      <b>Retrieve the right way</b><br/>
-      Each question is routed to vector search, multi-hop graph traversal or hybrid search fused with Reciprocal Rank Fusion, plus safe Text2Cypher for questions templates can't express.
-    </td>
-    <td width="33%" valign="top">
-      <b>Reason, verify, remember</b><br/>
-      A 9-node LangGraph <code>StateGraph</code> grades evidence, cites every claim <code>[n]</code>, verifies support and abstains when unsure — with Postgres-checkpointed memory and SSE streaming.
-    </td>
-  </tr>
-</table>
-
-- **Multi-hop, not look-alike passages** — *“Which developers work on Kafka projects managed by Rahul?”* links `Rahul` and `Kafka` in the graph, finds the bridge `Rahul → MANAGES → Project Alpha → USES → Kafka`, and answers **Amit, Neha**: a question plain vector similarity can't answer.
-- **Built to be trusted** — tenant isolation on every row, node and edge; LLM-generated Cypher is validated, tenant-scoped and run read-only; JWT with rotating refresh tokens and reuse detection; runs offline or on any OpenAI-compatible model (vLLM, Ollama, Azure).
-- **Evaluated, not eyeballed** — a 38-question harness compares Vector RAG vs GraphRAG vs Agentic GraphRAG on accuracy, faithfulness, retrieval recall, latency and routing. On unanswerable questions the agent abstained 5/5 times; single-shot Vector RAG managed 1/5 *(in-sample run: it shows the mechanism, not generalisation)*.
-
-`LangGraph` `LangChain` `Neo4j` `FastAPI` `Celery` `PostgreSQL` `Redis` `Streamlit` `Docker`
-
 ## More GenAI work
 
 <table>
+  <tr>
+    <td colspan="2" valign="top">
+      <h3><a href="https://github.com/MohdSakib535/Agentic-GraphRAG-Intelligent-Knowledge-Graph-Assistant">Agentic GraphRAG — Intelligent Knowledge Graph Assistant</a></h3>
+      <p>Enterprise knowledge assistant that turns PDF, DOCX, TXT and Markdown into a <b>Neo4j knowledge graph + vector index</b>. A <b>LangGraph agent</b> routes each question to vector, multi-hop graph or hybrid retrieval, grades the evidence, rewrites weak queries, and verifies that every answer is grounded and cited — or abstains when the evidence isn't there.</p>
+      <sub>LangGraph · LangChain · Neo4j · FastAPI · Celery · PostgreSQL · Redis · Streamlit · Docker</sub>
+    </td>
+  </tr>
   <tr>
     <td width="50%" valign="top">
       <h3><a href="https://github.com/MohdSakib535/SkillProof-AI">SkillProof-AI</a></h3>
